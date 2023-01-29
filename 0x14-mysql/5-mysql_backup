@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Does the following:
+#	- creates a mysql dump of all MySQL dbs named backup.sql
+#	- compresses the dump file to tar.gz archive
+#	- name format: day-month-year.tar.gz
+sudo mysqldump --user=root --password="$1" --all-databases > backup.sql
+tar -cvzf "$(date +"%d-%m-%Y").tar.gz" backup.sql
